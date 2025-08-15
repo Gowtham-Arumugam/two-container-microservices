@@ -11,4 +11,8 @@ public class service1 {
     public String greet() {
         return "Greetings from Service 1 !!!!";
     }
+    @GetMapping("/service1/status")
+    public String status() {
+        return "Service 1 is running smoothly!";
+    }
 }
