@@ -27,6 +27,7 @@ jobs:
         run: |
          cd service1
          pwd
+         ls -la
       - name: Maven Build
         run: mvn clean package
       - name: Maven Test
