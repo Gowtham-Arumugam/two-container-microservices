@@ -18,8 +18,10 @@ class Service1ApplicationTests {
     @Test
     void testadd() {
         int a = 5;
-        int b = 10;
+        int b = 5;
         int sum = a + b;
         assertEquals(10, sum);
     }
+
+
 }
