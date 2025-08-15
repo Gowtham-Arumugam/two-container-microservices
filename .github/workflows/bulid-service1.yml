@@ -24,6 +24,6 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: Maven Build
-        run: mvn -f ./sevice1/pom.xml clean package
+        run: mvn -f ./service1/pom.xml clean package
       - name: Maven Test
-        run: mvn -f ./sevice1/pom.xml test
+        run: mvn -f ./service1/pom.xml test
