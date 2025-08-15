@@ -9,6 +9,6 @@ public class service1 {
     }
     @GetMapping("/service1/greet")
     public String greet() {
-        return "Greetings from Service 1!";
+        return "Greetings from Service 1 !!!!";
     }
 }
