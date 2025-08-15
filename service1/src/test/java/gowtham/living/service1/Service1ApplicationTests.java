@@ -15,4 +15,11 @@ class Service1ApplicationTests {
         String result = "Hello, World!";
         assertEquals("Hello, World!", result);
     }
+    @Test
+    void testadd() {
+        int a = 5;
+        int b = 10;
+        int sum = a + b;
+        assertEquals(10, sum);
+    }
 }
