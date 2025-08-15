@@ -1,12 +1,9 @@
-name: Build-Service-1
+name: Test and Build Service 1
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - service1/**
   pull_request:
+    types:
+      - opened
     branches:
       - main
     paths:
@@ -15,5 +12,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: say hello
-        run: echo "Hello, World!"
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Maven Build
+        run: mvn clean package
+      - name: Maven Test
+        run: mvn test
