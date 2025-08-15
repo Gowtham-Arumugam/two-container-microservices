@@ -1,0 +1,19 @@
+name: bulid-service1
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - service1/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - service1/**
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: say hello
+        run: echo "Hello, World!"
