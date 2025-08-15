@@ -24,7 +24,9 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: move to service1 directory
-        run: cd service1
+        run: |
+         cd service1
+         pwd
       - name: Maven Build
         run: mvn clean package
       - name: Maven Test
