@@ -1,5 +1,6 @@
 package gowtham.living.service1;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -9,5 +10,9 @@ class Service1ApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
+	@Test
+    void testSayHello() {
+        String result = "Hello, World!";
+        assertEquals("Hello, World!", result);
+    }
 }
