@@ -23,12 +23,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: move to service1 directory
-        run: |
-         cd service1
-         pwd
-         ls -la
       - name: Maven Build
-        run: mvn clean package
+        run: mvn -f ./sevice1/pom.xml clean package
       - name: Maven Test
-        run: mvn test
+        run: mvn -f ./sevice1/pom.xml test
