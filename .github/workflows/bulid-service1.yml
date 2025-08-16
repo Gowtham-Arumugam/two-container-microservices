@@ -1,6 +1,10 @@
 name: Test and Build Service 1
 on:
   push:
+    branches:
+      - main
+    paths:
+      - service1/**
   workflow_dispatch:
   pull_request:
     types:
