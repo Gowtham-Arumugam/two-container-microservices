@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
       - name: Maven Test
         id: maven-test
-        run: mvn -f ./service1/pom.xml test build
+        run: mvn -f ./service1/pom.xml test
       - uses: azure/login@v2
         name: Login to Azure
         with:
