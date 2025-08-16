@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - service2/**
   workflow_dispatch:
   pull_request:
     types:
