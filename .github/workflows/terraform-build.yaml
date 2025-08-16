@@ -12,12 +12,10 @@ jobs:
         with:
           terraform_version: 1.12.2
       - name: Initialize Terraform
-        run: terraform init
-      - name: Validate Terraform configuration
-        run: terraform validate
-      - name: Login to Azure
-        run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
-      - name: Plan Terraform changes
-        run: terraform plan
-      - name: Apply Terraform changes
-        run: terraform apply -auto-approve
+        run: |
+            az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+            cd infra/terraform
+            terraform init
+            terraform validate
+            terraform plan
+            terraform apply -auto-approve
