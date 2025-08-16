@@ -24,12 +24,17 @@ jobs:
           distribution: 'temurin'
       - name: Maven Test
         id: maven-test
-        run: mvn -f ./service1/pom.xml test
-      - name: Maven Build
+        run: mvn -f ./service1/pom.xml test build
+      - uses: azure/login@v2
+        name: Login to Azure
+        with:
+          creds: ${{ secrets.TWOCONTAINERMICROSERVICE_AZURE_CREDENTIALS }}
+      - name: Docker Build and Push
         if: always() && steps.maven-test.outcome == 'success'
         run: | 
           docker build -t service1:latest ./service1
           docker tag service1:latest todain.azurecr.io/service1:${GITHUB_SHA}
+          az acr login --name todain
       - name: Comment and close PR using REST API
         if: always() && steps.maven-test.outcome == 'failure'
         env:
