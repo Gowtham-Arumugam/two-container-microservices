@@ -25,7 +25,11 @@ jobs:
       - name: Maven Test
         id: maven-test
         run: mvn -f ./service1/pom.xml test
-
+      - name: Maven Build
+        if: always() && steps.maven-test.outcome == 'success'
+        run: | 
+          docker build -t service1:latest ./service1
+          docker tag service1:latest todain.azurecr.io/service1:${GITHUB_SHA}
       - name: Comment and close PR using REST API
         if: always() && steps.maven-test.outcome == 'failure'
         env:
@@ -44,13 +48,5 @@ jobs:
               -X PATCH \
               -d "{\"state\": \"closed\"}" \
               "https://api.github.com/repos/$REPO/pulls/$NUMBER"
-            # - uses: actions/github-script@v7
-            #   with:
-            #     script: |
-            #       await github.rest.pulls.update({
-            #         owner: context.repo.owner,
-            #         repo: context.repo.repo,
-            #         pull_number: context.payload.pull_request.number,
-            #         state: 'closed'
-            #       });
+           
             
