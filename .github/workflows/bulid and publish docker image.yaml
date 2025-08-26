@@ -1,0 +1,33 @@
+name: Test and Build two Services
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Maven Test
+        id: maven-test
+        run: |
+          mvn -f ./service1/pom.xml test
+          mvn -f ./service1/pom.xml install
+          mvn -f ./service2/pom.xml test
+          mvn -f ./service2/pom.xml install
+      - name: Login to DockerHub
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - name: Docker Build and Push
+        if: always() && steps.maven-test.outcome == 'success'
+        run: | 
+          docker build -t gowthamarumugam/java-app2:latest ./service2
+          docker bulid -t gowthamarumugam/java-app1:latest ./service1
+          
+        
