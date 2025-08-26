@@ -14,6 +14,6 @@ public class service2 {
     }
     @GetMapping("/status")
     public String status() {
-        return "Service 2 is up and running!";
+        return "Service 2 is up and running!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     }
 }
