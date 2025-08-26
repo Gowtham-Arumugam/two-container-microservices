@@ -27,7 +27,7 @@ jobs:
       - name: Docker Build and Push
         if: always() && steps.maven-test.outcome == 'success'
         run: | 
-          docker build -t gowthamarumugam/java-app2:latest ./service2
-          docker bulid -t gowthamarumugam/java-app1:latest ./service1
+          docker build -t service2 ./service2
+          docker bulid -t service1 ./service1
           
         
