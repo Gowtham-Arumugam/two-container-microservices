@@ -16,4 +16,8 @@ public class service2 {
     public String status() {
         return "Service 2 is up and running!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     }
+    @GetMapping("/")
+    public String printPodName() {
+        return System.getenv("POD_NAME");
+    }
 }
