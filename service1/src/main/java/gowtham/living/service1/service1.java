@@ -18,10 +18,6 @@ public class service1 {
         return "Service 1 is running smoothly!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     } 
     @GetMapping("/")
-    public String home() {
-        return "hey home page";
-    }
-    @GetMapping("/")
     public String printPodName() {
         return String apiKey = System.getenv("POD_NAME");
     }
