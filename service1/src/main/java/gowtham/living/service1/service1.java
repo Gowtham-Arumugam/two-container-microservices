@@ -19,6 +19,6 @@ public class service1 {
     } 
     @GetMapping("/")
     public String printPodName() {
-        return String apiKey = System.getenv("POD_NAME");
+        return System.getenv("POD_NAME");
     }
 }
