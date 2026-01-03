@@ -18,6 +18,7 @@ public class service2 {
     }
     @GetMapping("/")
     public String printPodName() {
+        System.out.println("Root method called");
         return System.getenv("POD_NAME");
     }
 }
