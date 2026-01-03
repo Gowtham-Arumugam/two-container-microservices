@@ -18,7 +18,7 @@ public class service1 {
         return "Service 1 is running smoothly!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     } 
     @GetMapping("/")
-    public String status() {
+    public String home() {
         return "hey home page";
     } 
 }
